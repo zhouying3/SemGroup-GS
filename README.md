@@ -6,7 +6,24 @@ Project page: https://zhouying3.github.io/SemGroupTalker/
 
 Academic project page for **Coarse-to-Fine Gaussian Motion with Semantic Initialization for Talking Head Synthesis under Unseen Audio**.
 
-The website includes the paper abstract, method overview, quantitative and qualitative results, audio examples, and paper PDF. It is a static site that can be published directly from the repository root using GitHub Pages.
+The static project page has three content sections:
+
+1. Method overview and the paper abstract.
+2. One synchronized reconstruction comparison video, with ground-truth frames, shared mouth crops, and reconstruction error maps using a common color scale.
+3. One synchronized unseen-audio comparison video for inspecting mouth motion and speech timing.
+
+Both videos show SemGroupTalker (Ours) together with all five comparison methods: ER-NeRF, TalkingGaussian, GaussianTalker, InsTaG, and InsTaG++. Each player has native video controls and 0.25×, 0.5×, and 1× playback options. Playback starts only when the visitor chooses to play. The paper PDF remains linked from the page.
+
+## Page assets
+
+- `assets/method.png`
+- `assets/paper.pdf`
+- `assets/reconstruction-comparison.mp4`
+- `assets/reconstruction-poster.jpg`
+- `assets/ood-comparison.mp4`
+- `assets/ood-poster.jpg`
+
+Publish `index.html`, `styles.css`, `player.js`, and the page assets from the repository root using GitHub Pages.
 
 ## Local preview
 
