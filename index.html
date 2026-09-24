@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Semantic_RT: coarse-to-fine Gaussian motion with semantic initialization for talking head synthesis under unseen audio.">
+  <meta name="theme-color" content="#174bb8">
+  <title>Semantic_RT | Talking Head Synthesis under Unseen Audio</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23174bb8'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='white' font-family='Arial,sans-serif' font-size='19' font-weight='700'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="#main" aria-label="Semantic_RT home">Semantic<span>_RT</span></a>
+    <nav aria-label="Page sections">
+      <a href="#method">Method</a>
+      <a href="#results">Results</a>
+      <a href="assets/semantic-rt-paper.pdf" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="project-title">
+      <p class="eyebrow">AUDIO-DRIVEN 3D GAUSSIAN AVATARS</p>
+      <h1 id="project-title">Semantic<span>_RT</span></h1>
+      <h2 class="paper-title">Coarse-to-Fine Gaussian Motion with Semantic Initialization<br class="desktop-break"> for Talking Head Synthesis under Unseen Audio</h2>
+      <p class="authors">Ying Zhou<sup>1,2</sup><span class="author-separator">·</span>ZhongYuan Zhao<sup>1,2</sup><span class="author-separator">·</span>Feng Gao<sup>1</sup></p>
+      <p class="affiliations"><span><sup>1</sup> Peking University</span><span><sup>2</sup> Pengcheng Laboratory</span></p>
+      <div class="hero-actions">
+        <a class="button primary" href="assets/semantic-rt-paper.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7zM14 3v5h4M10 12h5M10 16h5"/></svg> Read the paper</a>
+        <a class="button secondary" href="#results">Explore results <span aria-hidden="true">↓</span></a>
+      </div>
+      <p class="hero-summary">Shared motion for regional coordination.<br>Local refinement for detailed articulation.</p>
+      <figure class="hero-figure">
+        <a href="assets/method.png" target="_blank" rel="noopener" aria-label="Open full-resolution method overview"><img src="assets/method.png" alt="Semantic_RT pipeline: facial parsing initializes soft Gaussian groups; audio-conditioned group motion is blended with per-Gaussian residuals before rendering." fetchpriority="high"></a>
+        <figcaption><span class="figure-label">THE IDEA</span> Give Gaussians a shared motion structure, then refine the motion of each Gaussian.</figcaption>
+      </figure>
+    </section>
+
+    <section class="abstract section" aria-labelledby="abstract-title">
+      <div class="section-label"><span>01</span><h2 id="abstract-title">Abstract</h2></div>
+      <div class="section-content"><p>Audio-driven talking head models reconstruct appearance well but struggle with lip synchronization under unseen speech. Short training videos provide limited audio-motion coverage, while image supervision does not explicitly specify which Gaussians should share motion. FLAME-based approaches provide structure through mesh binding, but their audio-driven animation depends on the accuracy of intermediate facial-motion predictions. We propose a coarse-to-fine Gaussian motion representation with semantic initialization that directly incorporates motion sharing. Shared group motion encourages regional coordination, while per-Gaussian residuals preserve local articulation. External face parsing initializes soft group assignments, which are refined during early joint training with reconstruction and semantic supervision. These assignments organize shared motion while preserving differences among the lips, teeth, and mouth interior. Across four identities, our method achieves the best synchronization performance among the compared methods on two datasets. These gains on unseen audio are achieved while maintaining competitive self-reconstruction quality.</p></div>
+    </section>
+
+    <section class="section" id="method" aria-labelledby="method-title">
+      <div class="section-label"><span>02</span><h2 id="method-title">Method</h2></div>
+      <div class="section-content">
+        <h3 class="section-headline">Coordinated motion, from groups to Gaussians.</h3>
+        <div class="method-steps">
+          <article><span class="step-label">INITIALIZE</span><h4>Semantic motion groups</h4><p>External face parsing initializes soft assignments to facial regions. Reconstruction and semantic supervision refine which Gaussians should share motion.</p></article>
+          <article><span class="step-label">COORDINATE</span><h4>Shared group motion</h4><p>Audio-conditioned group codes predict shared deformation. Each Gaussian blends the codes using its learned soft group weights.</p></article>
+          <article><span class="step-label">REFINE</span><h4>Local articulation</h4><p>Per-Gaussian residuals capture local differences in motion. The combined codes update Gaussian geometry and attributes before rendering.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="results-section" id="results" aria-labelledby="results-title">
+      <div class="results-intro"><p class="eyebrow">EXPERIMENTS</p><h2 id="results-title">Synchronization under unseen speech.</h2><p>Evaluation across May, Lieu, Obama, and Shaheen, with unseen driving audio from CP-benchmark and THQA.</p></div>
+      <div class="result-highlights" aria-label="Selected unseen-audio results">
+        <div><span>CP-benchmark · Sync-D ↓</span><strong>8.426</strong><p>vs. 8.840 for the best baseline</p></div>
+        <div><span>THQA · Sync-D ↓</span><strong>9.223</strong><p>vs. 9.529 for the best baseline</p></div>
+        <div><span>Self-reconstruction · PSNR ↑</span><strong>32.350<small> dB</small></strong><p>Competitive reconstruction quality</p></div>
+      </div>
+      <div class="table-heading"><h3>Quantitative comparison</h3><p>Best values in <strong>bold</strong>. ↓ lower is better; ↑ higher is better.</p></div>
+      <div class="table-scroll" role="region" aria-label="Quantitative comparison table, scroll horizontally on small screens" tabindex="0">
+        <table>
+          <caption class="visually-hidden">Self-reconstruction and synchronization under unseen driving audio. Metrics are averaged equally across four identities.</caption>
+          <thead><tr><th rowspan="2" scope="col">Method</th><th colspan="3" scope="colgroup">Self-reconstruction</th><th colspan="2" scope="colgroup">CP-benchmark</th><th colspan="2" scope="colgroup">THQA</th></tr><tr><th scope="col">PSNR ↑</th><th scope="col">Sync-D ↓</th><th scope="col">Sync-C ↑</th><th scope="col">Sync-D ↓</th><th scope="col">Sync-C ↑</th><th scope="col">Sync-D ↓</th><th scope="col">Sync-C ↑</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">ER-NeRF</th><td>28.406</td><td>8.802</td><td>6.118</td><td>9.722</td><td>4.992</td><td>9.736</td><td>3.550</td></tr>
+            <tr><th scope="row">TalkingGaussian</th><td>32.495</td><td>8.112</td><td>6.918</td><td>8.840</td><td>5.660</td><td>9.529</td><td>3.655</td></tr>
+            <tr><th scope="row">GaussianTalker</th><td><strong>32.802</strong></td><td>8.643</td><td>6.761</td><td>9.440</td><td>5.662</td><td>9.891</td><td>3.807</td></tr>
+            <tr><th scope="row">InsTaG</th><td>30.255</td><td>11.075</td><td>3.575</td><td>10.880</td><td>3.524</td><td>10.706</td><td>2.422</td></tr>
+            <tr><th scope="row">InsTaG++</th><td>32.333</td><td>9.314</td><td>5.386</td><td>9.524</td><td>4.903</td><td>9.748</td><td>3.245</td></tr>
+            <tr class="ours"><th scope="row">Semantic_RT <span>(Ours)</span></th><td>32.350</td><td><strong>7.643</strong></td><td><strong>7.562</strong></td><td><strong>8.426</strong></td><td><strong>6.324</strong></td><td><strong>9.223</strong></td><td><strong>4.147</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Metrics are averaged equally across four identities. InsTaG follows its original setting; InsTaG++ uses the full target-identity training data. Self-reconstruction is evaluated with paired reference frames; CP-benchmark and THQA provide unseen driving audio without paired visual ground truth.</p>
+    </section>
+
+    <section class="qualitative" aria-labelledby="qualitative-title">
+      <div class="comparison-heading"><div><p class="eyebrow">LOOK CLOSER</p><h2 id="qualitative-title">Word-level articulation.</h2></div><a class="text-link" href="assets/comparison.jpg" target="_blank" rel="noopener">View full resolution <span aria-hidden="true">↗</span></a></div>
+      <p class="comparison-description">The same unseen speech drives each method. Compare the mouth motion through the words “Rob” and “bamboo”.</p>
+      <figure class="comparison-figure"><a href="assets/comparison.jpg" target="_blank" rel="noopener" aria-label="Open full-resolution word-level comparison"><img src="assets/comparison.jpg" alt="Word-level comparison of ER-NeRF, TalkingGaussian, GaussianTalker, InsTaG, InsTaG++, and Ours for May saying Rob and Shaheen saying bamboo, with matching time points and mouth close-ups." loading="lazy"></a><figcaption>Word-level qualitative comparison under unseen CP-benchmark audio.</figcaption></figure>
+      <div class="audio-examples">
+        <div><label for="audio-may"><span class="audio-identity">MAY</span> “Rob”</label><audio id="audio-may" controls preload="none" src="assets/may-rob.wav">Your browser does not support audio playback. <a href="assets/may-rob.wav">Download May’s audio</a>.</audio></div>
+        <div><label for="audio-shaheen"><span class="audio-identity">SHAHEEN</span> “bamboo”</label><audio id="audio-shaheen" controls preload="none" src="assets/shaheen-bamboo.wav">Your browser does not support audio playback. <a href="assets/shaheen-bamboo.wav">Download Shaheen’s audio</a>.</audio></div>
+      </div>
+    </section>
+    <footer><a class="wordmark" href="#main">Semantic<span>_RT</span></a><p>Coarse-to-fine Gaussian motion with semantic initialization.</p><a href="assets/semantic-rt-paper.pdf" target="_blank" rel="noopener">Read the paper <span aria-hidden="true">↗</span></a></footer>
+  </main>
+</body>
+</html>
