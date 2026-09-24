@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SemGroup-GS: coarse-to-fine Gaussian motion with semantic initialization for talking head synthesis under unseen audio.">
+  <meta name="description" content="SemGroupTalker: coarse-to-fine Gaussian motion with semantic initialization for talking head synthesis under unseen audio.">
   <meta name="theme-color" content="#174bb8">
-  <title>SemGroup-GS | Talking Head Synthesis under Unseen Audio</title>
+  <title>SemGroupTalker | Talking Head Synthesis under Unseen Audio</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23174bb8'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='white' font-family='Arial,sans-serif' font-size='19' font-weight='700'%3ES%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="wordmark" href="#main" aria-label="SemGroup-GS home">SemGroup<span>-GS</span></a>
+    <a class="wordmark" href="#main" aria-label="SemGroupTalker home">SemGroup<span>Talker</span></a>
     <nav aria-label="Page sections">
       <a href="#method">Method</a>
       <a href="#results">Results</a>
@@ -23,7 +23,7 @@
   <main id="main">
     <section class="hero" aria-labelledby="project-title">
       <p class="eyebrow">AUDIO-DRIVEN 3D GAUSSIAN AVATARS</p>
-      <h1 id="project-title">SemGroup<span>-GS</span></h1>
+      <h1 id="project-title">SemGroup<span>Talker</span></h1>
       <h2 class="paper-title">Coarse-to-Fine Gaussian Motion with Semantic Initialization<br class="desktop-break"> for Talking Head Synthesis under Unseen Audio</h2>
       <p class="authors">Ying Zhou<sup>1,2</sup><span class="author-separator">·</span>ZhongYuan Zhao<sup>1,2</sup><span class="author-separator">·</span>Feng Gao<sup>1</sup></p>
       <p class="affiliations"><span><sup>1</sup> Peking University</span><span><sup>2</sup> Pengcheng Laboratory</span></p>
@@ -33,7 +33,7 @@
       </div>
       <p class="hero-summary">Shared motion for regional coordination.<br>Local refinement for detailed articulation.</p>
       <figure class="hero-figure">
-        <a href="assets/method.png" target="_blank" rel="noopener" aria-label="Open full-resolution method overview"><img src="assets/method.png" alt="SemGroup-GS pipeline: facial parsing initializes soft Gaussian groups; audio-conditioned group motion is blended with per-Gaussian residuals before rendering." fetchpriority="high"></a>
+        <a href="assets/method.png" target="_blank" rel="noopener" aria-label="Open full-resolution method overview"><img src="assets/method.png" alt="SemGroupTalker pipeline: facial parsing initializes soft Gaussian groups; audio-conditioned group motion is blended with per-Gaussian residuals before rendering." fetchpriority="high"></a>
         <figcaption><span class="figure-label">THE IDEA</span> Give Gaussians a shared motion structure, then refine the motion of each Gaussian.</figcaption>
       </figure>
     </section>
@@ -73,7 +73,7 @@
             <tr><th scope="row">GaussianTalker</th><td><strong>32.802</strong></td><td>8.643</td><td>6.761</td><td>9.440</td><td>5.662</td><td>9.891</td><td>3.807</td></tr>
             <tr><th scope="row">InsTaG</th><td>30.255</td><td>11.075</td><td>3.575</td><td>10.880</td><td>3.524</td><td>10.706</td><td>2.422</td></tr>
             <tr><th scope="row">InsTaG++</th><td>32.333</td><td>9.314</td><td>5.386</td><td>9.524</td><td>4.903</td><td>9.748</td><td>3.245</td></tr>
-            <tr class="ours"><th scope="row">SemGroup-GS <span>(Ours)</span></th><td>32.350</td><td><strong>7.643</strong></td><td><strong>7.562</strong></td><td><strong>8.426</strong></td><td><strong>6.324</strong></td><td><strong>9.223</strong></td><td><strong>4.147</strong></td></tr>
+            <tr class="ours"><th scope="row">SemGroupTalker <span>(Ours)</span></th><td>32.350</td><td><strong>7.643</strong></td><td><strong>7.562</strong></td><td><strong>8.426</strong></td><td><strong>6.324</strong></td><td><strong>9.223</strong></td><td><strong>4.147</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -89,7 +89,7 @@
         <div><label for="audio-shaheen"><span class="audio-identity">SHAHEEN</span> “bamboo”</label><audio id="audio-shaheen" controls preload="none" src="assets/shaheen-bamboo.wav">Your browser does not support audio playback. <a href="assets/shaheen-bamboo.wav">Download Shaheen’s audio</a>.</audio></div>
       </div>
     </section>
-    <footer><a class="wordmark" href="#main">SemGroup<span>-GS</span></a><p>Coarse-to-fine Gaussian motion with semantic initialization.</p><a href="assets/paper.pdf" target="_blank" rel="noopener">Read the paper <span aria-hidden="true">↗</span></a></footer>
+    <footer><a class="wordmark" href="#main">SemGroup<span>Talker</span></a><p>Coarse-to-fine Gaussian motion with semantic initialization.</p><a href="assets/paper.pdf" target="_blank" rel="noopener">Read the paper <span aria-hidden="true">↗</span></a></footer>
   </main>
 </body>
 </html>
