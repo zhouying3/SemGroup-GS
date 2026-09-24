@@ -1,4 +1,8 @@
-# Semantic_RT
+# SemGroup-GS
+
+**Semantically Initialized Motion Groups for Gaussian Splatting**
+
+Project page: https://zhouying3.github.io/SemGroup-GS/
 
 Academic project page for **Coarse-to-Fine Gaussian Motion with Semantic Initialization for Talking Head Synthesis under Unseen Audio**.
 
@@ -14,4 +18,4 @@ python3 -m http.server 8000
 
 Open <http://localhost:8000/> in a web browser.
 
-All site assets use relative paths, so the page also works under a GitHub Pages project URL such as `/Semantic_RT/`.
+All site assets use relative paths, so the page also works under a GitHub Pages project URL such as `/SemGroup-GS/`.
